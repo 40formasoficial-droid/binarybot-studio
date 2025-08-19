@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>📊 BinaryBot Studio</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>BinaryBot Studio</h1>
+        <p>Plataforma de estudo para opções binárias (modo simulação)</p>
+
+        <div class="controls">
+            <select id="asset">
+                <option value="R_75">Volatilidade 75</option>
+                <option value="BTC">BTC/USD</option>
+                <option value="EURUSD">EUR/USD</option>
+            </select>
+            <select id="strategy">
+                <option value="sr">Suporte & Resistência</option>
+                <option value="candle">Padrões de Candle</option>
+                <option value="mix">Estratégia Mista</option>
+            </select>
+            <button onclick="runBacktest()">▶️ Rodar Backtest</button>
+            <button onclick="clearLogs()">🧹 Limpar</button>
+        </div>
+
+        <div class="results">
+            <h2>📈 Resultados</h2>
+            <p>Operações: <span id="total">0</span></p>
+            <p>Acertos: <span id="wins">0</span></p>
+            <p>Erros: <span id="losses">0</span></p>
+            <p>Win Rate: <span id="winrate">0%</span></p>
+            <p>Lucro Estimado: <span id="profit">$0</span></p>
+        </div>
+
+        <div class="logs">
+            <h3>📋 Logs de Operações</h3>
+            <pre id="log-output">Aguardando execução...</pre>
+        </div>
+    </div>
+
+    <script type="application/json" id="market-data">
+    [
+      {"time": "10:00", "open": 1000, "high": 1008, "low": 992, "close": 1005, "volume": 150},
+      {"time": "10:01", "open": 1005, "high": 1012, "low": 998, "close": 999, "volume": 180},
+      {"time": "10:02", "open": 999, "high": 1001, "low": 990, "close": 992, "volume": 210},
+      {"time": "10:03", "open": 992, "high": 998, "low": 985, "close": 988, "volume": 170},
+      {"time": "10:04", "open": 988, "high": 995, "low": 982, "close": 993, "volume": 160},
+      {"time": "10:05", "open": 993, "high": 999, "low": 987, "close": 990, "volume": 190},
+      {"time": "10:06", "open": 990, "high": 996, "low": 984, "close": 986, "volume": 200},
+      {"time": "10:07", "open": 986, "high": 992, "low": 980, "close": 991, "volume": 180},
+      {"time": "10:08", "open": 991, "high": 997, "low": 989, "close": 994, "volume": 170},
+      {"time": "10:09", "open": 994, "high": 1000, "low": 992, "close": 998, "volume": 210}
+    ]
+    </script>
+
+    <script src="backtest-engine.js"></script>
+</body>
+</html>
